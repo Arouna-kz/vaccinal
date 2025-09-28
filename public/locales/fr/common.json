@@ -1,0 +1,66 @@
+{
+  "app": {
+    "title": "Registre Vaccinal Blockchain",
+    "subtitle": "Système de gestion des vaccins décentralisé"
+  },
+  "navigation": {
+    "dashboard": "Tableau de bord",
+    "stocks": "Gestion des stocks",
+    "patients": "Patients",
+    "dao": "Gouvernance DAO",
+    "tokens": "Jetons VGOV"
+  },
+  "roles": {
+    "medical_agent": "Agent Médical",
+    "center_admin": "Administrateur Centre",
+    "dao_member": "Membre DAO",
+    "logistic_manager": "Gestionnaire Logistique"
+  },
+  "wallet": {
+    "connect": "Connecter MetaMask",
+    "disconnect": "Déconnecter",
+    "connected": "Connecté",
+    "not_connected": "Non connecté",
+    "switch_network": "Changer de réseau"
+  },
+  "stock": {
+    "title": "Gestion des stocks",
+    "add_center": "Ajouter un centre",
+    "configure_vaccine": "Configurer vaccin",
+    "current_stock": "Stock actuel",
+    "critical_threshold": "Seuil critique",
+    "add_stock": "Ajouter stock",
+    "remove_stock": "Retirer stock"
+  },
+  "patient": {
+    "title": "Gestion des patients",
+    "register": "Enregistrer patient",
+    "register_dose": "Enregistrer dose",
+    "patient_code": "Code patient",
+    "professional_category": "Catégorie professionnelle",
+    "vaccination_status": "Statut vaccinal"
+  },
+  "dao": {
+    "title": "Gouvernance DAO",
+    "proposals": "Propositions",
+    "vote": "Voter",
+    "create_proposal": "Créer proposition"
+  },
+  "tokens": {
+    "title": "Jetons VGOV",
+    "balance": "Solde",
+    "transfer": "Transférer",
+    "recipient": "Destinataire",
+    "amount": "Montant"
+  },
+  "common": {
+    "submit": "Soumettre",
+    "cancel": "Annuler",
+    "loading": "Chargement...",
+    "success": "Succès",
+    "error": "Erreur",
+    "address": "Adresse",
+    "amount": "Montant",
+    "description": "Description"
+  }
+}

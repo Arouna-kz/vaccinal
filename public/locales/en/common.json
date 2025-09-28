@@ -1,0 +1,66 @@
+{
+  "app": {
+    "title": "Blockchain Vaccine Registry",
+    "subtitle": "Decentralized vaccine management system"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "stocks": "Stock Management",
+    "patients": "Patients",
+    "dao": "DAO Governance",
+    "tokens": "VGOV Tokens"
+  },
+  "roles": {
+    "medical_agent": "Medical Agent",
+    "center_admin": "Center Admin",
+    "dao_member": "DAO Member",
+    "logistic_manager": "Logistic Manager"
+  },
+  "wallet": {
+    "connect": "Connect MetaMask",
+    "disconnect": "Disconnect",
+    "connected": "Connected",
+    "not_connected": "Not connected",
+    "switch_network": "Switch network"
+  },
+  "stock": {
+    "title": "Stock Management",
+    "add_center": "Add center",
+    "configure_vaccine": "Configure vaccine",
+    "current_stock": "Current stock",
+    "critical_threshold": "Critical threshold",
+    "add_stock": "Add stock",
+    "remove_stock": "Remove stock"
+  },
+  "patient": {
+    "title": "Patient Management",
+    "register": "Register patient",
+    "register_dose": "Register dose",
+    "patient_code": "Patient code",
+    "professional_category": "Professional category",
+    "vaccination_status": "Vaccination status"
+  },
+  "dao": {
+    "title": "DAO Governance",
+    "proposals": "Proposals",
+    "vote": "Vote",
+    "create_proposal": "Create proposal"
+  },
+  "tokens": {
+    "title": "VGOV Tokens",
+    "balance": "Balance",
+    "transfer": "Transfer",
+    "recipient": "Recipient",
+    "amount": "Amount"
+  },
+  "common": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "success": "Success",
+    "error": "Error",
+    "address": "Address",
+    "amount": "Amount",
+    "description": "Description"
+  }
+}
