@@ -495,131 +495,130 @@ export default function Home() {
   };
 
 return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-3">
-              <Shield className="w-8 h-8 text-primary" />
-              <h1 className="text-xl font-bold text-textPrimary">
-                {language === 'en' ? 'Vaccine Registry' : 'Registre Vaccinal'}
-              </h1>
-            </div>
-            
-            <div className="hidden md:flex items-center gap-4">
-              <LanguageSwitcher />
-              <WalletConnectButton />
-            </div>
+  <div className="min-h-screen bg-background">
+    {/* Header */}
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center gap-3">
+            <Shield className="w-8 h-8 text-primary" />
+            <h1 className="text-xl font-bold text-textPrimary">
+              {language === 'en' ? 'Vaccine Registry' : 'Registre Vaccinal'}
+            </h1>
+          </div>
+          
+          <div className="hidden md:flex items-center gap-4">
+            <LanguageSwitcher />
+            <WalletConnectButton />
+          </div>
 
-            <div className="md:hidden flex items-center gap-2">
-              <LanguageSwitcher />
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-              >
-                {sidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-              </Button>
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageSwitcher />
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
+              {sidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </Button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {/* Main content */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {!isConnected ? (
+        // Contenu pour utilisateurs non connectés
+        <div className="space-y-6">
+          <div className="text-center bg-gradient-to-r from-primary/10 to-primaryDark/10 rounded-lg p-8">
+            <Shield className="w-16 h-16 text-primary mx-auto mb-4" />
+            <h1 className="text-4xl font-bold text-textPrimary mb-2">
+              {t('title')}
+            </h1>
+            <p className="text-xl text-gray-600 mb-6">
+              {t('subtitle')}
+            </p>
+            <div className="bg-white/80 rounded-lg p-6 inline-block">
+              <p className="text-gray-700 mb-4">
+                {t('connectWallet')}
+              </p>
+              <WalletConnectButton />
             </div>
           </div>
         </div>
-      </header>
+      ) : (
+        // Contenu pour utilisateurs connectés
+        <div className="relative flex">
+          {/* Sidebar Overlay for mobile */}
+          {sidebarOpen && (
+            <div 
+              className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+              onClick={() => setSidebarOpen(false)}
+            />
+          )}
 
-      {/* Main content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {!isConnected ? (
-          <div className="space-y-6">
-            <div className="text-center bg-gradient-to-r from-primary/10 to-primaryDark/10 rounded-lg p-8">
-              <Shield className="w-16 h-16 text-primary mx-auto mb-4" />
-              <h1 className="text-4xl font-bold text-textPrimary mb-2">
-                {t('title')}
-              </h1>
-              <p className="text-xl text-gray-600 mb-6">
-                {t('subtitle')}
-              </p>
-              <div className="bg-white/80 rounded-lg p-6 inline-block">
-                <p className="text-gray-700 mb-4">
-                  {t('connectWallet')}
-                </p>
+          {/* Sidebar */}
+          <div className={`
+            fixed md:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 
+            transform transition-transform duration-300 ease-in-out md:transform-none
+            ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+          `}>
+            <div className="flex flex-col h-full">
+              {/* Sidebar Header */}
+              <div className="flex items-center justify-between p-4 border-b border-gray-200 md:hidden">
+                <div className="flex items-center gap-2">
+                  <Shield className="w-6 h-6 text-primary" />
+                  <span className="font-semibold text-textPrimary">Menu</span>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+
+              {/* Navigation */}
+              <nav className="flex-1 p-4 space-y-2">
+                {menuItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <Button
+                      key={item.id}
+                      variant={activeSection === item.id ? 'default' : 'ghost'}
+                      className={`w-full justify-start ${
+                        activeSection === item.id
+                          ? 'bg-primary text-white hover:bg-primaryDark'
+                          : 'hover:bg-gray-100'
+                      }`}
+                      onClick={() => {
+                        setActiveSection(item.id);
+                        setSidebarOpen(false);
+                      }}
+                    >
+                      <Icon className="w-4 h-4 mr-2" />
+                      {item.label}
+                    </Button>
+                  );
+                })}
+              </nav>
+
+              {/* Sidebar Footer - Wallet info on mobile */}
+              <div className="p-4 border-t border-gray-200 md:hidden">
                 <WalletConnectButton />
               </div>
             </div>
           </div>
-        ) : (
-          <div className="relative flex">
-            {/* Sidebar Overlay for mobile */}
-            {sidebarOpen && (
-              <div 
-                className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-                onClick={() => setSidebarOpen(false)}
-              />
-            )}
 
-            {/* Sidebar */}
-            <div className={`
-              fixed md:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 
-              transform transition-transform duration-300 ease-in-out md:transform-none
-              ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
-            `}>
-              <div className="flex flex-col h-full">
-                {/* Sidebar Header */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-200 md:hidden">
-                  <div className="flex items-center gap-2">
-                    <Shield className="w-6 h-6 text-primary" />
-                    <span className="font-semibold text-textPrimary">Menu</span>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setSidebarOpen(false)}
-                  >
-                    <X className="w-4 h-4" />
-                  </Button>
-                </div>
-
-                {/* Navigation */}
-                <nav className="flex-1 p-4 space-y-2">
-                  {menuItems.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <Button
-                        key={item.id}
-                        variant={activeSection === item.id ? 'default' : 'ghost'}
-                        className={`w-full justify-start ${
-                          activeSection === item.id
-                            ? 'bg-primary text-white hover:bg-primaryDark'
-                            : 'hover:bg-gray-100'
-                        }`}
-                        onClick={() => {
-                          setActiveSection(item.id);
-                          setSidebarOpen(false); // Close sidebar on mobile after selection
-                        }}
-                      >
-                        <Icon className="w-4 h-4 mr-2" />
-                        {item.label}
-                      </Button>
-                    );
-                  })}
-                </nav>
-
-                {/* Sidebar Footer - Wallet info on mobile */}
-                <div className="p-4 border-t border-gray-200 md:hidden">
-                  <WalletConnectButton />
-                </div>
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="flex-1 md:ml-0 min-h-screen">
-              {/* Page content */}
-              {renderActiveSection()}
-            </div>
+          {/* Content */}
+          <div className="flex-1 md:ml-0 min-h-screen">
+            {renderActiveSection()}
           </div>
-        )}
-
-        {!isConnected && renderActiveSection()}
-      </div>
+        </div>
+      )}
     </div>
-  );
+  </div>
+)
 }
