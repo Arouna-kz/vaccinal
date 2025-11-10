@@ -138,4 +138,14 @@ NEXT_PUBLIC_DEBUG=true
 # API Base URL (if needed for future backend integration)
 NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api
 
+# ===========================================
+# DEVELOPERS CERTIFICAT
+# ===========================================
+- Zié Arouna Koné : https://certs.hashgraphdev.com/89d7e7a7-58d0-43cb-b0be-2a2b8286001b.pdf
+
+- Marie Claire Kabran epse guehi : https://certs.hashgraphdev.com/0a33e7e7-02ac-4321-b0e2-ee65be8907d0.pdf 
+
+- Monné Estelle Dro epse Kouassi : https://certs.hashgraphdev.com/4cf797cf-1fa4-45c3-a4cd-a69fdd7021de.pdf 
+
+
 
